@@ -76,6 +76,11 @@ public class UserRegistration {
 		lastName();
 		email();
 		mobileNum();
+		System.out.println("Rules to be maintained for attaining a valid password");
+		System.out.println("RULE-1 : Should contain minimum of 8 characters");
+		System.out.println("RULE-2 : Should have atleast 1 Uppercase letter");
+		System.out.println("RULE-3 : Should have atleast 1 numeric number in password");
+		System.out.println("RULE-4 : Should contain exactly 1 special character");
 		password();
 	}
 }
