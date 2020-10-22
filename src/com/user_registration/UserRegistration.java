@@ -13,12 +13,23 @@ public class UserRegistration {
 		boolean fname = Pattern.matches("^[A-Z]([a-z]{2,})$", firstName);
 		if(fname == true)
 			System.out.println("Valid");
-		else 
+		else
+			System.out.println("Invalid");
+	}
+
+	public static void lastName() {
+		System.out.println("Last Name : ");
+		String lastName = SC.next();
+		boolean lname = Pattern.matches("^[A-Z]([a-z]{2,})$", lastName);
+		if(lname == true)
+			System.out.println("Valid");
+		else
 			System.out.println("Invalid");
 	}
 
 	public static void main(String args[]) {
 		System.out.println("*****WELCOME TO USER REGISTRATION SYSTEM*****");
 		firstName();
+		lastName();
 	}
 }
