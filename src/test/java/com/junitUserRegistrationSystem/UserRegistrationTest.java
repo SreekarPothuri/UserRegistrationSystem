@@ -2,6 +2,7 @@ package test.java.com.junitUserRegistrationSystem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -129,12 +130,8 @@ class UserRegistrationTest {
 	// MobileNumber Test cases
 	@Test
 	public void testMobileNumberWithTwoMandatoryFeilds_testAssertionHappy() throws InvalidUserDetailsException {
-		try {
-			boolean result = user.mobileNum("+91 8888999777");
+			boolean result = user.mobileNum("91 8888999777");
 			Assert.assertTrue(result);
-		} catch (InvalidUserDetailsException e) {
-			Assert.assertEquals("Enter valid user details", e.getMessage());
-		}
 	}
 
 	@Test
@@ -159,26 +156,22 @@ class UserRegistrationTest {
 
 	@Test
 	public void testMobileNumberWithTwoMandatoryFeilds_testAssertionSad() throws InvalidUserDetailsException {
-		try {
-			boolean result = user.mobileNum("+91 8796560000");
+			boolean result = user.mobileNum("91 8796560000");
 			Assert.assertFalse(result);
-		} catch (InvalidUserDetailsException e) {
-			Assert.assertEquals("Enter valid user details", e.getMessage());
-		}
 	}
 
 	// Password Test cases
 	@Test
 	public void testPasswordWithMinimumEightCharacters_testAssertionHappy() throws InvalidUserDetailsException {
-		boolean result = user.password1("Sreekarp");
+		boolean result = user.password("Sreekar9@");
 		Assert.assertTrue(result);
 	}
 
 	@Test
 	public void testPasswordWithoutMinimumEightCharacters_testAssertionHappy() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password1("Sreekar");
-			Assert.assertFalse(result);
+			boolean result = user.password("Sree@9");
+			Assert.assertTrue(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
 		}
@@ -187,7 +180,7 @@ class UserRegistrationTest {
 	@Test
 	public void testPasswordWithoutMinimumEightCharacters_testAssertionSad() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password1("8545654");
+			boolean result = user.password("srEe9@");
 			Assert.assertTrue(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -196,20 +189,20 @@ class UserRegistrationTest {
 
 	@Test
 	public void testPasswordWithMinimumEightCharacters_testAssertionSad() throws InvalidUserDetailsException {
-		boolean result = user.password1("87965646");
+		boolean result = user.password("Sreekar9@");
 		Assert.assertFalse(result);
 	}
 
 	@Test
 	public void testPasswordWithAtleastOneUpperCase_testAssertionHappy() throws InvalidUserDetailsException {
-		boolean result = user.password2("Sreekarp");
+		boolean result = user.password("Sreekarp9@");
 		Assert.assertTrue(result);
 	}
 
 	@Test
 	public void testPasswordWithoutAtleastOneUpperCase_testAssertionHappy() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password2("sreeka");
+			boolean result = user.password("sreekar99$");
 			Assert.assertFalse(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -219,7 +212,7 @@ class UserRegistrationTest {
 	@Test
 	public void testPasswordWithoutAtleastOneUpperCase_testAssertionSad() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password2("kmdklwkas");
+			boolean result = user.password("sreeKar$9");
 			Assert.assertTrue(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -228,20 +221,20 @@ class UserRegistrationTest {
 
 	@Test
 	public void testPasswordWithAtleastOneUpperCase_testAssertionSad() throws InvalidUserDetailsException {
-		boolean result = user.password2("skwndkxS");
+		boolean result = user.password("sreekAr9@");
 		Assert.assertFalse(result);
 	}
 
 	@Test
 	public void testPasswordWithAtleastOneNumeric_testAssertionHappy() throws InvalidUserDetailsException {
-		boolean result = user.password3("Sreekar09");
+		boolean result = user.password("Sreekar9@");
 		Assert.assertTrue(result);
 	}
 
 	@Test
 	public void testPasswordWithoutAtleastOneNumeric_testAssertionHappy() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password3("sreeka");
+			boolean result = user.password("sreekar$");
 			Assert.assertFalse(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -251,7 +244,7 @@ class UserRegistrationTest {
 	@Test
 	public void testPasswordWithoutAtleastOneNumeric_testAssertionSad() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password3("kmdklwkasK");
+			boolean result = user.password("sreeKar$");
 			Assert.assertTrue(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -260,20 +253,20 @@ class UserRegistrationTest {
 
 	@Test
 	public void testPasswordWithAtleastOneNumeric_testAssertionSad() throws InvalidUserDetailsException {
-		boolean result = user.password3("9skwndkx");
+		boolean result = user.password("Sreekar9$");
 		Assert.assertFalse(result);
 	}
 
 	@Test
 	public void testPasswordWithExactlyOneSpecialCharacter_testAssertionHappy() throws InvalidUserDetailsException {
-		boolean result = user.password4("Sreekar09@");
+		boolean result = user.password("Sreekar09@");
 		Assert.assertTrue(result);
 	}
 
 	@Test
 	public void testPasswordWithoutExactlyOneSpecialCharacter_testAssertionHappy() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password4("sreeka");
+			boolean result = user.password("sreekaR9");
 			Assert.assertFalse(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -283,7 +276,7 @@ class UserRegistrationTest {
 	@Test
 	public void testPasswordWithoutExactlyOneSpecialCharacter_testAssertionSad() throws InvalidUserDetailsException {
 		try {
-			boolean result = user.password4("9kmdklwkasK");
+			boolean result = user.password("sreeKar9");
 			Assert.assertTrue(result);
 		} catch (InvalidUserDetailsException e) {
 			Assert.assertEquals("Enter valid user details", e.getMessage());
@@ -292,8 +285,7 @@ class UserRegistrationTest {
 
 	@Test
 	public void testPasswordWithExactlyOneSpecialCharacter_testAssertionSad() throws InvalidUserDetailsException {
-		boolean result = user.password4("skwndkx$");
+		boolean result = user.password("Sreekar9$");
 		Assert.assertFalse(result);
 	}
-
 }
