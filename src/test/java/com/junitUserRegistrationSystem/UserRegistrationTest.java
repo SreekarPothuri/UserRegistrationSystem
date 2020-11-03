@@ -7,6 +7,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 import main.java.com.junitUserRegistrationSystem.UserRegistration;
 import main.java.com.customexceptions.*;
@@ -287,5 +288,20 @@ class UserRegistrationTest {
 	public void testPasswordWithExactlyOneSpecialCharacter_testAssertionSad() throws InvalidUserDetailsException {
 		boolean result = user.password("Sreekar9$");
 		Assert.assertFalse(result);
+	}
+	
+	//Custom Exception Test cases
+	
+	@org.junit.Test (expected = InvalidUserDetailsException.class)
+	public void testCustomExceptiongetFirstNameWithNullValue_testAssertionHappy() {
+		boolean userInput;
+		try {
+			ExpectedException exceptionRule = ExpectedException.none();
+			exceptionRule.expect(InvalidUserDetailsException.class);
+			userInput = user.firstName("sree");
+			Assert.assertEquals("Enter valid user details",userInput);
+		} catch (InvalidUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
 }
